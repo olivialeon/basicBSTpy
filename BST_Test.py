@@ -52,7 +52,6 @@ class BSTTester(unittest.TestCase):
   def test_add_left_node_to_root(self):
     self._Binary_Search_Tree.insert_element('Structures')
     self._Binary_Search_Tree.insert_element('Data')
-    #self.assertEqual('[ Structures, Data ]', str(self._Binary_Search_Tree)) #how is this suppose to print out ??? Does it print in alpha order? 
     self.assertEqual(2, self._Binary_Search_Tree.get_height())
     
   def test_inoder_with_root_and_left_node(self):
@@ -73,7 +72,6 @@ class BSTTester(unittest.TestCase):
   def test_add_right_node_to_root(self):
     self._Binary_Search_Tree.insert_element('Data')
     self._Binary_Search_Tree.insert_element('Structures')
-    #self.assertEqual('[ Data, Structures ]', str(self._Binary_Search_Tree))
     self.assertEqual(2, self._Binary_Search_Tree.get_height())
   
   def test_inorder_with_root_and_right_node(self):
@@ -94,8 +92,7 @@ class BSTTester(unittest.TestCase):
   def test_add_right_node_to_right_child(self):
     self._Binary_Search_Tree.insert_element('Data')
     self._Binary_Search_Tree.insert_element('Rocks')
-    self._Binary_Search_Tree.insert_element('Structures')
-    #self.assertEqual('[  ]', str(self._Binary_Search_Tree))  
+    self._Binary_Search_Tree.insert_element('Structures') 
     self.assertEqual(3, self._Binary_Search_Tree.get_height())
     
   def test_inorder_with_right_node_to_right_child(self):
@@ -120,7 +117,6 @@ class BSTTester(unittest.TestCase):
     self._Binary_Search_Tree.insert_element('Structures')
     self._Binary_Search_Tree.insert_element('Rocks')
     self._Binary_Search_Tree.insert_element('Data')
-    #self.assertEqual('[ ]', str(self._Binary_Search_Tree))
     self.assertEqual(3, self._Binary_Search_Tree.get_height())
     
   def test_inorder_with_left_node_to_left_child(self):
@@ -145,7 +141,6 @@ class BSTTester(unittest.TestCase):
     self._Binary_Search_Tree.insert_element('Structures')
     self._Binary_Search_Tree.insert_element('Rocks')
     self._Binary_Search_Tree.insert_element('Tree') 
-    # print bst tree test needed 
     self.assertEqual(2, self._Binary_Search_Tree.get_height())
     
   def test_inorder_second_level(self):
@@ -171,7 +166,6 @@ class BSTTester(unittest.TestCase):
     self._Binary_Search_Tree.insert_element('Rocks')
     self._Binary_Search_Tree.insert_element('Tree')
     self._Binary_Search_Tree.insert_element('Data')
-      #self.assertEqual('[ ]', str(self._Binary_Search_Tree))
     self.assertEqual(3, self._Binary_Search_Tree.get_height())
     
   def test_inorder_with_left_node_to_left_of_second_level(self):
@@ -201,8 +195,10 @@ class BSTTester(unittest.TestCase):
     self._Binary_Search_Tree.insert_element('Rocks')
     self._Binary_Search_Tree.insert_element('Tree')
     self._Binary_Search_Tree.insert_element('Sign')
-    #self.assertEqual('[ ]', str(self._Binary_Search_Tree))
     self.assertEqual(3, self._Binary_Search_Tree.get_height())
+    self.assertEqual('[ Rocks, Sign, Structures, Tree ]' ,str(self._Binary_Search_Tree.in_order()))
+    self.assertEqual('[ Structures, Rocks, Sign, Tree ]' ,str(self._Binary_Search_Tree.pre_order()))
+    self.assertEqual('[ Sign, Rocks, Tree, Structures ]' ,str(self._Binary_Search_Tree.post_order()))
     
   def test_add_left_and_right_node_to_left_of_second_level(self):
     self._Binary_Search_Tree.insert_element('Structures')
@@ -211,22 +207,30 @@ class BSTTester(unittest.TestCase):
     self._Binary_Search_Tree.insert_element('Data')
     self._Binary_Search_Tree.insert_element('Sign')  
     self.assertEqual(3, self._Binary_Search_Tree.get_height())
+    self.assertEqual('[ Data, Rocks, Sign, Structures, Tree ]' ,str(self._Binary_Search_Tree.in_order()))
+    self.assertEqual('[ Structures, Rocks, Data, Sign, Tree ]' ,str(self._Binary_Search_Tree.pre_order()))
+    self.assertEqual('[ Data, Sign, Rocks, Tree, Structures ]' ,str(self._Binary_Search_Tree.post_order()))
     
   def test_add_left_node_to_right_of_second_level(self):
     self._Binary_Search_Tree.insert_element('Structures')
     self._Binary_Search_Tree.insert_element('Rocks')
     self._Binary_Search_Tree.insert_element('Tree')
-    self._Binary_Search_Tree.insert_element('Three')
-    #self.assertEqual('[ ]', str(self._Binary_Search_Tree))  
+    self._Binary_Search_Tree.insert_element('Three') 
     self.assertEqual(3, self._Binary_Search_Tree.get_height())
+    self.assertEqual('[ Rocks, Structures, Three, Tree ]' ,str(self._Binary_Search_Tree.in_order()))
+    self.assertEqual('[ Structures, Rocks, Tree, Three ]' ,str(self._Binary_Search_Tree.pre_order()))
+    self.assertEqual('[ Rocks, Three, Tree, Structures ]' ,str(self._Binary_Search_Tree.post_order()))
     
   def test_add_right_node_to_right_of_second_level(self):
     self._Binary_Search_Tree.insert_element('Structures')
     self._Binary_Search_Tree.insert_element('Rocks')
     self._Binary_Search_Tree.insert_element('Tree')
     self._Binary_Search_Tree.insert_element('Unique')
-    #self.assertEqual('[ ]', str(self._Binary_Search_Tree)) 
     self.assertEqual(3, self._Binary_Search_Tree.get_height())
+    self.assertEqual('[ Rocks, Structures, Tree, Unique ]' ,str(self._Binary_Search_Tree.in_order()))
+    self.assertEqual('[ Structures, Rocks, Tree, Unique ]' ,str(self._Binary_Search_Tree.pre_order()))
+    self.assertEqual('[ Rocks, Unique, Tree, Structures ]' ,str(self._Binary_Search_Tree.post_order()))
+  
   
   def test_add_left_and_right_node_to_right_of_second_level(self):
     self._Binary_Search_Tree.insert_element('Structures')
@@ -235,6 +239,9 @@ class BSTTester(unittest.TestCase):
     self._Binary_Search_Tree.insert_element('Three')
     self._Binary_Search_Tree.insert_element('Unique')
     self.assertEqual(3, self._Binary_Search_Tree.get_height())
+    self.assertEqual('[ Rocks, Structures, Three, Tree, Unique ]' ,str(self._Binary_Search_Tree.in_order()))
+    self.assertEqual('[ Structures, Rocks, Tree, Three, Unique ]' ,str(self._Binary_Search_Tree.pre_order()))
+    self.assertEqual('[ Rocks, Three, Unique, Tree, Structures ]' ,str(self._Binary_Search_Tree.post_order()))
   
   def test_add_third_level(self):
     self._Binary_Search_Tree.insert_element('Structures')
@@ -245,37 +252,10 @@ class BSTTester(unittest.TestCase):
     self._Binary_Search_Tree.insert_element('Three')
     self._Binary_Search_Tree.insert_element('Unique')
     self.assertEqual(3, self._Binary_Search_Tree.get_height())
-    
-  def test_inorder_third_level(self):
-    self._Binary_Search_Tree.insert_element('Structures')
-    self._Binary_Search_Tree.insert_element('Rocks')
-    self._Binary_Search_Tree.insert_element('Tree')
-    self._Binary_Search_Tree.insert_element('Data') 
-    self._Binary_Search_Tree.insert_element('Sign') 
-    self._Binary_Search_Tree.insert_element('Three')
-    self._Binary_Search_Tree.insert_element('Unique')    
     self.assertEqual('[ Data, Rocks, Sign, Structures, Three, Tree, Unique ]' ,str(self._Binary_Search_Tree.in_order()))
-    
-  def test_preorder_third_level(self):
-    self._Binary_Search_Tree.insert_element('Structures')
-    self._Binary_Search_Tree.insert_element('Rocks')
-    self._Binary_Search_Tree.insert_element('Tree')
-    self._Binary_Search_Tree.insert_element('Data') 
-    self._Binary_Search_Tree.insert_element('Sign') 
-    self._Binary_Search_Tree.insert_element('Three')
-    self._Binary_Search_Tree.insert_element('Unique')    
     self.assertEqual('[ Structures, Rocks, Data, Sign, Tree, Three, Unique ]' ,str(self._Binary_Search_Tree.pre_order()))
-    
-  def test_postorder_third_level(self):
-    self._Binary_Search_Tree.insert_element('Structures')
-    self._Binary_Search_Tree.insert_element('Rocks')
-    self._Binary_Search_Tree.insert_element('Tree')
-    self._Binary_Search_Tree.insert_element('Data') 
-    self._Binary_Search_Tree.insert_element('Sign') 
-    self._Binary_Search_Tree.insert_element('Three')
-    self._Binary_Search_Tree.insert_element('Unique')    
     self.assertEqual('[ Data, Sign, Rocks, Three, Unique, Tree, Structures ]' ,str(self._Binary_Search_Tree.post_order()))
-    
+
     
   #following tests for removal 
 
@@ -314,6 +294,8 @@ class BSTTester(unittest.TestCase):
     self._Binary_Search_Tree.remove_element('Trees') 
     self.assertEqual(2, self._Binary_Search_Tree.get_height())  
     self.assertEqual('[ Data, Structures ]' ,str(self._Binary_Search_Tree.in_order()))
+    self.assertEqual('[ Structures, Data ]' ,str(self._Binary_Search_Tree.pre_order()))
+    self.assertEqual('[ Data, Structures ]' ,str(self._Binary_Search_Tree.post_order()))
     
   def test_removing_left_child_second_level_leaving_height_three(self):
     self._Binary_Search_Tree.insert_element('Structures')
@@ -324,6 +306,8 @@ class BSTTester(unittest.TestCase):
     self._Binary_Search_Tree.remove_element('Rocks')
     self.assertEqual(3, self._Binary_Search_Tree.get_height())
     self.assertEqual('[ Data, Sign, Structures, Tree ]' ,str(self._Binary_Search_Tree.in_order()))  
+    self.assertEqual('[ Structures, Sign, Data, Tree ]' ,str(self._Binary_Search_Tree.pre_order()))
+    self.assertEqual('[ Data, Sign, Tree, Structures ]' ,str(self._Binary_Search_Tree.post_order()))
   
   def test_removing_left_child_of_left_of_second_level_leaving_height_three(self):
     self._Binary_Search_Tree.insert_element('Structures')
@@ -334,6 +318,8 @@ class BSTTester(unittest.TestCase):
     self._Binary_Search_Tree.remove_element('Data')
     self.assertEqual(3, self._Binary_Search_Tree.get_height())
     self.assertEqual('[ Rocks, Sign, Structures, Tree ]' ,str(self._Binary_Search_Tree.in_order()))
+    self.assertEqual('[ Structures, Rocks, Sign, Tree ]' ,str(self._Binary_Search_Tree.pre_order()))
+    self.assertEqual('[ Sign, Rocks, Tree, Structures ]' ,str(self._Binary_Search_Tree.post_order()))
     
   def test_removing_left_child_of_left_of_second_level_leaving_height_two(self):
     self._Binary_Search_Tree.insert_element('Structures')
@@ -343,6 +329,8 @@ class BSTTester(unittest.TestCase):
     self._Binary_Search_Tree.remove_element('Data')
     self.assertEqual(2, self._Binary_Search_Tree.get_height())  
     self.assertEqual('[ Rocks, Structures, Tree ]' ,str(self._Binary_Search_Tree.in_order()))
+    self.assertEqual('[ Structures, Rocks, Tree ]' ,str(self._Binary_Search_Tree.pre_order()))
+    self.assertEqual('[ Rocks, Tree, Structures ]' ,str(self._Binary_Search_Tree.post_order()))
     
   def test_removing_right_child_of_left_of_second_level_leaving_height_three(self):
     self._Binary_Search_Tree.insert_element('Structures')
@@ -353,6 +341,8 @@ class BSTTester(unittest.TestCase):
     self._Binary_Search_Tree.remove_element('Sign')
     self.assertEqual(3, self._Binary_Search_Tree.get_height()) 
     self.assertEqual('[ Data, Rocks, Structures, Tree ]' ,str(self._Binary_Search_Tree.in_order()))
+    self.assertEqual('[ Structures, Rocks, Data, Tree ]' ,str(self._Binary_Search_Tree.pre_order()))
+    self.assertEqual('[ Data, Rocks, Tree, Structures ]' ,str(self._Binary_Search_Tree.post_order()))
   
   def test_removing_right_child_of_left_of_second_level_leaving_height_two(self):
     self._Binary_Search_Tree.insert_element('Structures')
@@ -362,6 +352,8 @@ class BSTTester(unittest.TestCase):
     self._Binary_Search_Tree.remove_element('Sign')
     self.assertEqual(2, self._Binary_Search_Tree.get_height()) 
     self.assertEqual('[ Rocks, Structures, Tree ]' ,str(self._Binary_Search_Tree.in_order()))
+    self.assertEqual('[ Structures, Rocks, Tree ]' ,str(self._Binary_Search_Tree.pre_order()))
+    self.assertEqual('[ Rocks, Tree, Structures ]' ,str(self._Binary_Search_Tree.post_order()))
     
   def test_removing_left_child_of_second_level_leaving_height_three(self):
     self._Binary_Search_Tree.insert_element('Structures')
@@ -372,6 +364,8 @@ class BSTTester(unittest.TestCase):
     self._Binary_Search_Tree.remove_element('Tree')
     self.assertEqual(3, self._Binary_Search_Tree.get_height()) 
     self.assertEqual('[ Rocks, Structures, Three, Unique ]' ,str(self._Binary_Search_Tree.in_order()))
+    self.assertEqual('[ Structures, Rocks, Unique, Three ]' ,str(self._Binary_Search_Tree.pre_order()))
+    self.assertEqual('[ Rocks, Three, Unique, Structures ]' ,str(self._Binary_Search_Tree.post_order()))
     
   def test_removing_left_child_of_right_of_second_level_leaving_height_three(self):
     self._Binary_Search_Tree.insert_element('Structures')
@@ -381,7 +375,9 @@ class BSTTester(unittest.TestCase):
     self._Binary_Search_Tree.insert_element('Unique')
     self._Binary_Search_Tree.remove_element('Three')
     self.assertEqual(3, self._Binary_Search_Tree.get_height()) 
-    self.assertEqual('[ Rocks, Structures, Tree, Unique ]' ,str(self._Binary_Search_Tree.in_order()))    
+    self.assertEqual('[ Rocks, Structures, Tree, Unique ]' ,str(self._Binary_Search_Tree.in_order()))   
+    self.assertEqual('[ Structures, Rocks, Tree, Unique ]' ,str(self._Binary_Search_Tree.pre_order())) 
+    self.assertEqual('[ Rocks, Unique, Tree, Structures ]' ,str(self._Binary_Search_Tree.post_order())) 
     
   def test_removing_left_child_of_right_of_second_level_leaving_height_two(self):
     self._Binary_Search_Tree.insert_element('Structures')
@@ -391,6 +387,8 @@ class BSTTester(unittest.TestCase):
     self._Binary_Search_Tree.remove_element('Three')
     self.assertEqual(2, self._Binary_Search_Tree.get_height()) 
     self.assertEqual('[ Rocks, Structures, Tree ]' ,str(self._Binary_Search_Tree.in_order()))
+    self.assertEqual('[ Structures, Rocks, Tree ]' ,str(self._Binary_Search_Tree.pre_order()))
+    self.assertEqual('[ Rocks, Tree, Structures ]' ,str(self._Binary_Search_Tree.post_order()))    
     
   def test_removing_right_child_of_right_of_second_level_leaving_height_three(self):
     self._Binary_Search_Tree.insert_element('Structures')
@@ -401,6 +399,8 @@ class BSTTester(unittest.TestCase):
     self._Binary_Search_Tree.remove_element('Unique')
     self.assertEqual(3, self._Binary_Search_Tree.get_height())  
     self.assertEqual('[ Rocks, Structures, Three, Tree ]' ,str(self._Binary_Search_Tree.in_order()))
+    self.assertEqual('[ Structures, Rocks, Tree, Three ]' ,str(self._Binary_Search_Tree.pre_order()))
+    self.assertEqual('[ Rocks, Three, Tree, Structures ]' ,str(self._Binary_Search_Tree.post_order()))
     
   def test_removing_right_child_of_right_of_second_level_leaving_height_two(self):
     self._Binary_Search_Tree.insert_element('Structures')
@@ -410,6 +410,8 @@ class BSTTester(unittest.TestCase):
     self._Binary_Search_Tree.remove_element('Unique')
     self.assertEqual(2, self._Binary_Search_Tree.get_height())  
     self.assertEqual('[ Rocks, Structures, Tree ]' ,str(self._Binary_Search_Tree.in_order()))
+    self.assertEqual('[ Structures, Rocks, Tree ]' ,str(self._Binary_Search_Tree.pre_order()))
+    self.assertEqual('[ Rocks, Tree, Structures ]' ,str(self._Binary_Search_Tree.post_order()))
     
   def test_removing_root_with_one_right_child(self):
     self._Binary_Search_Tree.insert_element('Structures')
@@ -495,4 +497,4 @@ class BSTTester(unittest.TestCase):
     self.assertEqual('[ Data, Rocks, Test, Three, Water, Unique, Structures ]' ,str(self._Binary_Search_Tree.post_order()))  
 
 if __name__ == '__main__':
-  unittest.main()
+  unittest.main() 
